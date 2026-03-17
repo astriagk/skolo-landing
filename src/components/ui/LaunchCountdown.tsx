@@ -60,26 +60,26 @@ export function CountdownHero() {
 
   return (
     <div className="mt-8">
-      <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 mb-3 flex items-center gap-2">
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 mb-4 flex items-center gap-2">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
         </span>
         Launching May 1, 2026
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex items-end gap-1">
         {units.map((u, i) => (
-          <div key={u.label} className="flex items-center gap-2">
-            <div className="flex flex-col items-center">
-              <div className="bg-gray-900 text-white rounded-xl px-4 py-3 min-w-[60px] text-center">
-                <span className="text-2xl font-extrabold tabular-nums leading-none">
-                  {pad(u.value)}
-                </span>
-              </div>
-              <span className="text-xs text-gray-400 mt-1 font-medium">{u.label}</span>
+          <div key={u.label} className="flex items-end gap-1">
+            <div className="flex flex-col items-center gap-1.5">
+              <span className="text-4xl font-bold tabular-nums leading-none tracking-tight text-gray-900">
+                {pad(u.value)}
+              </span>
+              <span className="text-[10px] uppercase tracking-widest text-gray-400 font-medium">
+                {u.label}
+              </span>
             </div>
             {i < units.length - 1 && (
-              <span className="text-xl font-bold text-gray-400 mb-4">:</span>
+              <span className="text-2xl font-light text-gray-300 mb-5 mx-1">:</span>
             )}
           </div>
         ))}

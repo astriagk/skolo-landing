@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+html {
+  scroll-snap-type: y proximity;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
 @theme inline {
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;

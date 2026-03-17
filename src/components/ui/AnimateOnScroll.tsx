@@ -24,7 +24,8 @@ export default function AnimateOnScroll({
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add("is-visible");
-          observer.unobserve(el);
+        } else {
+          el.classList.remove("is-visible");
         }
       },
       { threshold: 0.1 }
