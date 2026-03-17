@@ -1,0 +1,89 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
+const LAUNCH_DATE = new Date("2026-05-01T00:00:00+05:30");
+
+function getTimeLeft() {
+  const now = new Date();
+  const diff = LAUNCH_DATE.getTime() - now.getTime();
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
+
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
+
+/** Small inline pill for the Navbar */
+export function CountdownPill() {
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    setTime(getTimeLeft());
+    const id = setInterval(() => setTime(getTimeLeft()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-primary-50 border border-primary-200 px-3 py-1 text-xs font-semibold text-primary-700">
+      <span className="relative flex h-1.5 w-1.5">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-500" />
+      </span>
+      Launching May 1 &bull; {time.days}d {pad(time.hours)}h {pad(time.minutes)}m
+    </span>
+  );
+}
+
+/** Big countdown for the Hero section */
+export function CountdownHero() {
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    setTime(getTimeLeft());
+    const id = setInterval(() => setTime(getTimeLeft()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const units = [
+    { label: "Days", value: time.days },
+    { label: "Hours", value: time.hours },
+    { label: "Minutes", value: time.minutes },
+    { label: "Seconds", value: time.seconds },
+  ];
+
+  return (
+    <div className="mt-8">
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 mb-4 flex items-center gap-2">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
+        </span>
+        Launching May 1, 2026
+      </p>
+      <div className="flex items-end gap-1">
+        {units.map((u, i) => (
+          <div key={u.label} className="flex items-end gap-1">
+            <div className="flex flex-col items-center gap-1.5">
+              <span className="text-4xl font-bold tabular-nums leading-none tracking-tight text-gray-900">
+                {pad(u.value)}
+              </span>
+              <span className="text-[10px] uppercase tracking-widest text-gray-400 font-medium">
+                {u.label}
+              </span>
+            </div>
+            {i < units.length - 1 && (
+              <span className="text-2xl font-light text-gray-300 mb-5 mx-1">:</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
