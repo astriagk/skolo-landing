@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION =
   "Track your child's school bus in real-time. Live GPS tracking powered by TomTom, smart notifications, and OTP-based pickup verification. Built for Indian families.";
 
 export const CONTACT = {
-  email: "hello@skolo.in",
+  email: "skolo@astriagk.com",
   phone: "+91 88673 47448",
   whatsapp: "918867347448",
   whatsappMessage: "Hi! I'm interested in Skolo for school commute tracking.",
