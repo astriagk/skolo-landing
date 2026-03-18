@@ -36,7 +36,7 @@ export default function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
           ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-gray-900/5 border-b border-gray-200/50"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
@@ -65,7 +65,7 @@ export default function Navbar() {
                   "rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
                   isActive
                     ? "text-primary-700 bg-primary-50/80"
-                    : "text-gray-600 hover:text-primary-600 hover:bg-gray-50/80"
+                    : "text-gray-600 hover:text-primary-600 hover:bg-gray-50/80",
                 )}
               >
                 {link.label}
@@ -77,37 +77,59 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
           <CountdownPill />
-          <Button href="#interest-form" size="sm" className="shadow-lg shadow-primary-500/20">
+          <Button
+            href="#interest-form"
+            size="sm"
+            className="shadow-lg shadow-primary-500/20"
+          >
             Join Us
           </Button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200/60 bg-white/80 backdrop-blur-sm md:hidden cursor-pointer"
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="h-5 w-5 text-gray-700"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* Mobile CTA + hamburger */}
+        <div className="flex items-center gap-2 md:hidden">
+          <Button
+            href="#interest-form"
+            size="sm"
+            className="shadow-lg shadow-primary-500/20"
           >
-            {isMobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            Join Us
+          </Button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200/60 bg-white/80 backdrop-blur-sm cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="h-5 w-5 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
-
       {/* Mobile menu */}
       <div
         className={cn(
           "md:hidden overflow-hidden transition-all duration-300 bg-white/95 backdrop-blur-xl border-b border-gray-100",
-          isMobileMenuOpen ? "max-h-[32rem]" : "max-h-0"
+          isMobileMenuOpen ? "max-h-[32rem]" : "max-h-0",
         )}
       >
         <div className="flex flex-col gap-1 px-4 py-4">
@@ -122,7 +144,11 @@ export default function Navbar() {
             </a>
           ))}
           <div className="mt-3 pt-3 border-t border-gray-100">
-            <Button href="#interest-form" size="sm" className="w-full justify-center shadow-lg shadow-primary-500/20">
+            <Button
+              href="#interest-form"
+              size="sm"
+              className="w-full justify-center shadow-lg shadow-primary-500/20"
+            >
               Join Us
             </Button>
           </div>
