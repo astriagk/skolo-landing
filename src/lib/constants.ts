@@ -6,14 +6,16 @@ export const SITE_DESCRIPTION =
 export const CONTACT = {
   email: "skolo@astriagk.com",
   phone: "+91 88673 47448",
+  phone2: "+91 82176 81139",
   whatsapp: "918867347448",
+  whatsapp2: "918217681139",
   whatsappMessage: "Hi! I'm interested in Skolo for school commute tracking.",
   address: "Bangalore, Karnataka, India",
 };
 
 export const SOCIAL = {
-  twitter: "https://twitter.com/skoloapp",
-  linkedin: "https://linkedin.com/company/skolo",
+  twitter: "https://twitter.com/Astria_GK",
+  linkedin: "http://www.linkedin.com/in/astria-gk",
   instagram: "https://instagram.com/astriagk",
 };
 
@@ -26,3 +28,4 @@ export const NAV_LINKS = [
 ];
 
 export const WHATSAPP_LINK = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
+export const WHATSAPP_LINK2 = `https://wa.me/${CONTACT.whatsapp2}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
