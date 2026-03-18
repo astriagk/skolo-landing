@@ -36,7 +36,7 @@ export const parentFeatures: Feature[] = [
       "Know the exact estimated arrival time so you can plan your morning and evening routine.",
   },
   {
-    icon: "👨‍👩‍👧",
+    icon: "👥",
     title: "Family Access",
     description:
       "Share tracking access with family members. Grandparents, guardians — everyone stays connected.",

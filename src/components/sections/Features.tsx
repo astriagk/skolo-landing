@@ -32,7 +32,7 @@ export default function Features() {
     {
       id: "parents",
       label: "For Parents",
-      icon: "👨‍👩‍👧",
+      icon: "👥",
       content: <FeatureGrid features={parentFeatures} />,
     },
     {
