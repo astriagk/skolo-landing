@@ -143,21 +143,21 @@ export function RocketCountdown() {
   return (
     <div className="text-center py-8 mt-12 mb-8">
       <div
-        className="text-5xl mb-4 animate-bounce"
+        className="text-3xl md:text-5xl mb-4 animate-bounce"
         style={{ animationDuration: "1.5s" }}
       >
         🚀
       </div>
-      <p className="text-sm font-semibold uppercase tracking-widest text-primary-500 mb-6">
+      <p className="text-xs md:text-sm font-semibold uppercase tracking-widest text-primary-500 mb-6">
         Launching May 1, 2026
       </p>
-      <div className="text-6xl font-black text-primary-600 font-mono tracking-wider animate-pulse mb-4">
+      <div className="text-3xl md:text-6xl font-black text-primary-600 font-mono tracking-wider animate-pulse mb-4">
         T - {pad(days)}:{pad(hours)}:{pad(minutes)}:{pad(seconds)}
       </div>
-      <p className="text-xs text-primary-500 mt-4 mb-2 font-semibold uppercase tracking-widest">
+      <p className="text-[10px] md:text-xs text-primary-500 mt-4 mb-2 font-semibold uppercase tracking-widest">
         Days : Hours : Minutes : Seconds
       </p>
-      <p className="text-sm text-primary-500 mt-3 font-semibold">
+      <p className="text-xs md:text-sm text-primary-500 mt-3 font-semibold">
         Ignition Sequence
       </p>
     </div>
