@@ -88,13 +88,6 @@ export default function Navbar() {
 
         {/* Mobile CTA + hamburger */}
         <div className="flex items-center gap-2 md:hidden">
-          <Button
-            href="#interest-form"
-            size="sm"
-            className="shadow-lg shadow-primary-500/20"
-          >
-            Join Us
-          </Button>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200/60 bg-white/80 backdrop-blur-sm cursor-pointer"
@@ -143,15 +136,6 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <div className="mt-3 pt-3 border-t border-gray-100">
-            <Button
-              href="#interest-form"
-              size="sm"
-              className="w-full justify-center shadow-lg shadow-primary-500/20"
-            >
-              Join Us
-            </Button>
-          </div>
         </div>
       </div>
     </nav>
