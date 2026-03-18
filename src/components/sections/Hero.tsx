@@ -1,7 +1,7 @@
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
-import { CountdownHero } from "@/components/ui/LaunchCountdown";
+import { RocketCountdown } from "@/components/ui/LaunchCountdown";
 import InterestCounter from "@/components/ui/InterestCounter";
 
 export default function Hero() {
@@ -140,7 +140,7 @@ export default function Hero() {
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={450}>
-              <CountdownHero />
+              <RocketCountdown />
             </AnimateOnScroll>
 
             {/* Audience-specific CTAs */}

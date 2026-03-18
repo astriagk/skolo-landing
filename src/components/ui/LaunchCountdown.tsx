@@ -22,7 +22,12 @@ function pad(n: number) {
 
 /** Small inline pill for the Navbar */
 export function CountdownPill() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [time, setTime] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     setTime(getTimeLeft());
@@ -36,14 +41,20 @@ export function CountdownPill() {
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-500" />
       </span>
-      Launching May 1 &bull; {time.days}d {pad(time.hours)}h {pad(time.minutes)}m
+      Launching May 1 &bull; {time.days}d {pad(time.hours)}h {pad(time.minutes)}
+      m
     </span>
   );
 }
 
 /** Big countdown for the Hero section */
 export function CountdownHero() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [time, setTime] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     setTime(getTimeLeft());
@@ -79,11 +90,76 @@ export function CountdownHero() {
               </span>
             </div>
             {i < units.length - 1 && (
-              <span className="text-2xl font-light text-gray-300 mb-5 mx-1">:</span>
+              <span className="text-2xl font-light text-gray-300 mb-5 mx-1">
+                :
+              </span>
             )}
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+/** Rocket launch style final countdown (T-3, 2, 1...) */
+export function RocketCountdown() {
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [isLaunched, setIsLaunched] = useState(false);
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date();
+      const diff = LAUNCH_DATE.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        setIsLaunched(true);
+        setTimeLeft(0);
+      } else {
+        setTimeLeft(Math.ceil(diff / 1000)); // Round up to nearest second
+      }
+    };
+
+    updateCountdown();
+    const id = setInterval(updateCountdown, 100); // Update more frequently for smooth countdown
+    return () => clearInterval(id);
+  }, []);
+
+  if (isLaunched) {
+    return (
+      <div className="text-center">
+        <div className="text-6xl font-black text-primary-600 animate-pulse">
+          🚀 LIFTOFF! 🚀
+        </div>
+      </div>
+    );
+  }
+
+  const days = Math.floor(timeLeft / (3600 * 24));
+  const hours = Math.floor((timeLeft % (3600 * 24)) / 3600);
+  const minutes = Math.floor((timeLeft % 3600) / 60);
+  const seconds = timeLeft % 60;
+
+  // Show rocket countdown with T - format
+  return (
+    <div className="text-center py-8 mt-12 mb-8">
+      <div
+        className="text-5xl mb-4 animate-bounce"
+        style={{ animationDuration: "1.5s" }}
+      >
+        🚀
+      </div>
+      <p className="text-sm font-semibold uppercase tracking-widest text-primary-500 mb-6">
+        Launching May 1, 2026
+      </p>
+      <div className="text-6xl font-black text-primary-600 font-mono tracking-wider animate-pulse mb-4">
+        T - {pad(days)}:{pad(hours)}:{pad(minutes)}:{pad(seconds)}
+      </div>
+      <p className="text-xs text-primary-500 mt-4 mb-2 font-semibold uppercase tracking-widest">
+        Days : Hours : Minutes : Seconds
+      </p>
+      <p className="text-sm text-primary-500 mt-3 font-semibold">
+        Ignition Sequence
+      </p>
     </div>
   );
 }
