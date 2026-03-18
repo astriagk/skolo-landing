@@ -6,7 +6,6 @@ const schoolFeatures = [
   "Real-time GPS tracking",
   "Smart notifications",
   "OTP verification",
-  "WhatsApp alerts",
   "Unlimited tracking",
   "Priority support",
 ];
@@ -16,19 +15,13 @@ const privateFeatures = [
   "Direct parent subscription",
   "Multi-child support",
   "Flexible billing cycles",
-  "Family dashboard",
   "Premium support",
 ];
 
 const subscriptionTiers = [
   { label: "Monthly", icon: "📅", desc: "Pay month to month", badge: null },
-  { label: "Quarterly", icon: "📆", desc: "Save ~10%", badge: "Save 10%" },
-  {
-    label: "Yearly",
-    icon: "🗓️",
-    desc: "Best value — like Prime",
-    badge: "Best Value",
-  },
+  { label: "Quarterly", icon: "📆", desc: "Pay every 3 months", badge: null },
+  { label: "Yearly", icon: "🗓️", desc: "Best value", badge: "Best Value" },
 ];
 
 export default function Pricing() {
@@ -172,8 +165,7 @@ export default function Pricing() {
 
               <p className="text-xs text-gray-500 mb-4 text-center flex items-center justify-center gap-1">
                 <span>💡</span>
-                Pricing based on number of children. Like Amazon Prime or
-                Netflix — minimal monthly fee.
+                Pricing based on number of children — minimal monthly fee.
               </p>
 
               <ul className="space-y-3 mb-8 flex-1">
