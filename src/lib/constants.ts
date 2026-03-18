@@ -13,7 +13,7 @@ export const CONTACT = {
 
 export const SOCIAL = {
   twitter: "https://twitter.com/Astria_GK",
-  linkedin: "http://www.linkedin.com/in/astria-gk",
+  linkedin: "https://www.linkedin.com/in/astria-gk",
   instagram: "https://instagram.com/astriagk",
 };
 
