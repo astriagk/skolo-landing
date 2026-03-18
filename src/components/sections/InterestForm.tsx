@@ -10,6 +10,7 @@ import ParentFields from "@/components/form/ParentFields";
 import SchoolFields from "@/components/form/SchoolFields";
 import DriverFields from "@/components/form/DriverFields";
 import { WHATSAPP_LINK } from "@/lib/constants";
+import InterestStats from "@/components/ui/InterestStats";
 
 const initialParentData = { name: "", phone: "", email: "", schoolName: "", city: "" };
 const initialSchoolData = { schoolName: "", contactName: "", designation: "", phone: "", email: "", city: "", busCount: "", studentCount: "" };
@@ -147,6 +148,10 @@ export default function InterestForm() {
             </p>
           </AnimateOnScroll>
         </div>
+
+        <AnimateOnScroll>
+          <InterestStats />
+        </AnimateOnScroll>
 
         <AnimateOnScroll>
           <div className="rounded-2xl border border-gray-200/60 bg-white/90 backdrop-blur-sm p-6 md:p-8 shadow-xl shadow-gray-200/40">
