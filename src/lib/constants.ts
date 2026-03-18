@@ -12,8 +12,8 @@ export const CONTACT = {
 };
 
 export const SOCIAL = {
-  twitter: "https://twitter.com/skoloapp",
-  linkedin: "https://linkedin.com/company/skolo",
+  twitter: "https://twitter.com/Astria_GK",
+  linkedin: "https://www.linkedin.com/in/astria-gk",
   instagram: "https://instagram.com/astriagk",
 };
 

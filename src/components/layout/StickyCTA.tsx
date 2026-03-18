@@ -15,7 +15,7 @@ export default function StickyCTA() {
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-24 right-6 z-40 flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-2xl shadow-primary-500/40 transition-all duration-300 hover:shadow-primary-500/60 hover:-translate-y-1 hover:scale-105 md:bottom-28 md:right-8"
+        className="fixed bottom-24 right-6 z-40 flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-2xl shadow-primary-500/40 transition-all duration-300 hover:shadow-primary-500/60 hover:-translate-y-1 hover:scale-105 cursor-pointer md:bottom-28 md:right-8"
         aria-label="Scroll to top"
       >
         <svg
