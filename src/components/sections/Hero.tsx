@@ -1,4 +1,3 @@
-import SectionWrapper from "@/components/ui/SectionWrapper";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
@@ -113,7 +112,7 @@ export default function Hero() {
             <AnimateOnScroll delay={500}>
               <div className="mt-6 flex flex-wrap gap-2">
                 {[
-                  { label: "Parents", icon: "\u{1F468}\u200D\u{1F469}\u200D\u{1F467}" },
+                  { label: "Parents", icon: "👥" },
                   { label: "Schools", icon: "\u{1F3EB}" },
                   { label: "Drivers", icon: "\u{1F68C}" },
                 ].map((item) => (

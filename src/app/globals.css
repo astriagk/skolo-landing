@@ -1,14 +1,5 @@
 @import "tailwindcss";
 
-html {
-  scroll-snap-type: y proximity;
-}
-
-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-}
-
 @theme inline {
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
@@ -258,4 +249,50 @@ body {
 }
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Explicit ping keyframe for cross-browser mobile support */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* GPU acceleration for heavy animations — ensures smooth rendering on mobile Chrome/Safari */
+.animate-blob,
+.animate-float,
+.animate-float-slow,
+.animate-float-delayed,
+.animate-glow-pulse {
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Shimmer/gradient text — explicit cross-browser support */
+.shimmer-text,
+.text-gradient {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-float,
+  .animate-float-slow,
+  .animate-float-delayed,
+  .animate-glow-pulse,
+  .shimmer-text,
+  .animate-on-scroll {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }

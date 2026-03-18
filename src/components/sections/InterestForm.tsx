@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import Button from "@/components/ui/Button";
@@ -21,18 +21,40 @@ export default function InterestForm() {
   const [parentData, setParentData] = useState(initialParentData);
   const [schoolData, setSchoolData] = useState(initialSchoolData);
   const [driverData, setDriverData] = useState(initialDriverData);
-  const [consent, setConsent] = useState(false);
+  const [consent, setConsent] = useState(true);
   const [whatsappOptIn, setWhatsappOptIn] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+
+  const currentPhone =
+    userType === "parent" ? parentData.phone
+    : userType === "school" ? schoolData.phone
+    : driverData.phone;
+
+  useEffect(() => {
+    if (!userType || currentPhone.length !== 10) {
+      setPhoneError("");
+      return;
+    }
+    let cancelled = false;
+    fetch(`/api/interest?phone=${currentPhone}&userType=${userType}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (!cancelled) setPhoneError(data.exists ? data.message : "");
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [currentPhone, userType]);
 
   const canProceedStep1 = userType !== null;
 
   const canProceedStep2 = (() => {
-    if (userType === "parent") return parentData.name && parentData.phone.length === 10 && parentData.schoolName && parentData.city;
-    if (userType === "school") return schoolData.schoolName && schoolData.contactName && schoolData.designation && schoolData.phone.length === 10 && schoolData.email && schoolData.city;
-    if (userType === "driver") return driverData.name && driverData.phone.length === 10 && driverData.city;
+    if (phoneError) return false;
+    if (userType === "parent") return parentData.name.trim() && parentData.phone.length === 10 && parentData.city;
+    if (userType === "school") return schoolData.schoolName.trim() && schoolData.contactName.trim() && schoolData.designation && schoolData.phone.length === 10 && schoolData.email.trim() && schoolData.city;
+    if (userType === "driver") return driverData.name.trim() && driverData.phone.length === 10 && driverData.city;
     return false;
   })();
 
@@ -56,6 +78,11 @@ export default function InterestForm() {
         body: JSON.stringify(getFormData()),
       });
 
+      if (res.status === 409) {
+        const data = await res.json();
+        setError(data.message || "You are already registered with this phone number.");
+        return;
+      }
       if (!res.ok) throw new Error("Submission failed");
       setIsSubmitted(true);
     } catch {
@@ -161,13 +188,13 @@ export default function InterestForm() {
                 </h3>
 
                 {userType === "parent" && (
-                  <ParentFields data={parentData} onChange={setParentData} />
+                  <ParentFields data={parentData} onChange={setParentData} phoneError={phoneError} />
                 )}
                 {userType === "school" && (
-                  <SchoolFields data={schoolData} onChange={setSchoolData} />
+                  <SchoolFields data={schoolData} onChange={setSchoolData} phoneError={phoneError} />
                 )}
                 {userType === "driver" && (
-                  <DriverFields data={driverData} onChange={setDriverData} />
+                  <DriverFields data={driverData} onChange={setDriverData} phoneError={phoneError} />
                 )}
 
                 <div className="mt-6 flex justify-between">
@@ -257,7 +284,12 @@ export default function InterestForm() {
                 </div>
 
                 {error && (
-                  <p className="text-sm text-danger-500 mb-4">{error}</p>
+                  <div className="flex items-start gap-3 rounded-xl bg-danger-50 border border-danger-200 px-4 py-3 mb-4">
+                    <svg className="h-5 w-5 text-danger-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                    </svg>
+                    <p className="text-sm text-danger-700">{error}</p>
+                  </div>
                 )}
 
                 <div className="flex justify-between">
