@@ -5,7 +5,6 @@ import {
   SOCIAL,
   NAV_LINKS,
   WHATSAPP_LINK,
-  WHATSAPP_LINK2,
 } from "@/lib/constants";
 
 export default function Footer() {
@@ -116,46 +115,22 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <p className="text-sm text-gray-400 hover:text-white transition-colors duration-200 pb-2">
-                  Call us
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  <a
-                    href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                    className="whitespace-nowrap rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-200"
-                  >
-                    {CONTACT.phone}
-                  </a>
-                  <a
-                    href={`tel:${CONTACT.phone2.replace(/\s/g, "")}`}
-                    className="whitespace-nowrap rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-200"
-                  >
-                    {CONTACT.phone2}
-                  </a>
-                </div>
+                <a
+                  href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {CONTACT.phone}
+                </a>
               </li>
               <li>
-                <p className="text-sm text-gray-400 hover:text-white transition-colors duration-200 pb-2">
-                  WhatsApp
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="whitespace-nowrap rounded-lg border border-green-800/60 bg-green-900/30 px-2.5 py-1 text-xs font-semibold text-green-400 hover:bg-green-900/50 hover:text-green-300 hover:border-green-700 transition-all duration-200"
-                  >
-                    {CONTACT.phone}
-                  </a>
-                  <a
-                    href={WHATSAPP_LINK2}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="whitespace-nowrap rounded-lg border border-green-800/60 bg-green-900/30 px-2.5 py-1 text-xs font-semibold text-green-400 hover:bg-green-900/50 hover:text-green-300 hover:border-green-700 transition-all duration-200"
-                  >
-                    {CONTACT.phone2}
-                  </a>
-                </div>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-whatsapp hover:brightness-110 transition-colors duration-200"
+                >
+                  Chat on WhatsApp
+                </a>
               </li>
             </ul>
             {/* Social */}
