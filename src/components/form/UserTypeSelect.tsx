@@ -13,7 +13,7 @@ interface UserTypeSelectProps {
 const options = [
   {
     type: "parent" as UserType,
-    emoji: "👨‍👩‍👧",
+    emoji: "👥",
     title: "Parent",
     description: "Track your child's commute in real time",
     iconBg: "from-blue-100 to-primary-100",
@@ -82,8 +82,18 @@ export default function UserTypeSelect({
                   opt.activeBadge,
                 )}
               >
-                <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                <svg
+                  className="h-3.5 w-3.5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={3}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </span>
             )}
