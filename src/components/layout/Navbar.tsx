@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import { openInterestModal } from "@/lib/modalController";
 import { CountdownPill } from "@/components/ui/LaunchCountdown";
 
 export default function Navbar() {
@@ -78,9 +79,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <CountdownPill />
           <Button
-            href="#interest-form"
             size="sm"
             className="shadow-lg shadow-primary-500/20"
+            onClick={openInterestModal}
           >
             Join Us
           </Button>

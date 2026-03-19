@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getInterestCounts } from "@/lib/api";
 
 export default function InterestCounter() {
   const [counts, setCounts] = useState({
@@ -11,9 +12,9 @@ export default function InterestCounter() {
   });
 
   useEffect(() => {
-    fetch("/api/interest/counts")
-      .then((res) => res.json())
-      .then((data) => setCounts(data));
+    getInterestCounts()
+      .then(setCounts)
+      .catch(() => {});
   }, []);
 
   const totalFormatted = counts.total === 0 ? "..." : counts.total + "+";
@@ -28,7 +29,7 @@ export default function InterestCounter() {
   if (counts.school > 0) categories.push(`${counts.school} schools`);
   if (counts.driver > 0) categories.push(`${counts.driver} drivers`);
 
-  const categoriesString = categories.join(", ");
+  const categoriesString = categories.join(" • ");
 
   return (
     <p className="text-sm text-gray-500">

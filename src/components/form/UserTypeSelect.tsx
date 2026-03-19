@@ -10,29 +10,42 @@ interface UserTypeSelectProps {
   onSelect?: (type: UserType) => void;
 }
 
-const options: {
-  type: UserType;
-  icon: string;
-  title: string;
-  description: string;
-}[] = [
+const options = [
   {
-    type: "parent",
-    icon: "👥",
-    title: "I'm a Parent",
-    description: "Track my child's school commute",
+    type: "parent" as UserType,
+    emoji: "👨‍👩‍👧",
+    title: "Parent",
+    description: "Track your child's commute in real time",
+    iconBg: "from-blue-100 to-primary-100",
+    activeBorder: "border-primary-500",
+    activeBg: "bg-primary-50",
+    activeText: "text-primary-700",
+    activeBadge: "from-primary-500 to-blue-600",
+    activeShadow: "shadow-primary-100",
   },
   {
-    type: "school",
-    icon: "🏫",
-    title: "I'm a School",
-    description: "Manage school transport operations",
+    type: "school" as UserType,
+    emoji: "🏫",
+    title: "School",
+    description: "Manage routes, fleets & drivers easily",
+    iconBg: "from-violet-100 to-purple-100",
+    activeBorder: "border-violet-500",
+    activeBg: "bg-violet-50",
+    activeText: "text-violet-700",
+    activeBadge: "from-violet-500 to-purple-600",
+    activeShadow: "shadow-violet-100",
   },
   {
-    type: "driver",
-    icon: "🚌",
-    title: "I'm a Driver",
+    type: "driver" as UserType,
+    emoji: "🚌",
+    title: "Driver",
     description: "Join as a bus driver or operator",
+    iconBg: "from-amber-100 to-orange-100",
+    activeBorder: "border-amber-500",
+    activeBg: "bg-amber-50",
+    activeText: "text-amber-700",
+    activeBadge: "from-amber-500 to-orange-500",
+    activeShadow: "shadow-amber-100",
   },
 ];
 
@@ -43,28 +56,65 @@ export default function UserTypeSelect({
 }: UserTypeSelectProps) {
   return (
     <div className="grid gap-3 sm:grid-cols-3">
-      {options.map((opt) => (
-        <button
-          key={opt.type}
-          type="button"
-          onClick={() => {
-            onChange(opt.type);
-            onSelect?.(opt.type);
-          }}
-          className={cn(
-            "flex flex-col items-center gap-2 rounded-xl border-2 p-5 text-center transition-all cursor-pointer",
-            value === opt.type
-              ? "border-primary-500 bg-primary-50 shadow-md"
-              : "border-gray-200 bg-white hover:border-primary-200 hover:bg-gray-50",
-          )}
-        >
-          <span className="text-3xl">{opt.icon}</span>
-          <span className="font-semibold text-gray-900 text-sm">
-            {opt.title}
-          </span>
-          <span className="text-xs text-gray-500">{opt.description}</span>
-        </button>
-      ))}
+      {options.map((opt) => {
+        const selected = value === opt.type;
+        return (
+          <button
+            key={opt.type}
+            type="button"
+            onClick={() => {
+              onChange(opt.type);
+              onSelect?.(opt.type);
+            }}
+            className={cn(
+              "group relative flex flex-col items-center gap-3 rounded-2xl border-2 p-5 text-center transition-all duration-200 cursor-pointer outline-none",
+              "hover:scale-[1.03] hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary-400",
+              selected
+                ? `${opt.activeBorder} ${opt.activeBg} scale-[1.03] shadow-lg ${opt.activeShadow}`
+                : "border-gray-200 bg-white hover:border-gray-300 shadow-sm",
+            )}
+          >
+            {/* Selected badge */}
+            {selected && (
+              <span
+                className={cn(
+                  "absolute -top-2.5 -right-2.5 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br shadow-md",
+                  opt.activeBadge,
+                )}
+              >
+                <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+            )}
+
+            {/* Icon */}
+            <span
+              className={cn(
+                "flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br text-3xl shadow-sm transition-transform duration-200 group-hover:scale-110",
+                opt.iconBg,
+              )}
+            >
+              {opt.emoji}
+            </span>
+
+            {/* Text */}
+            <span className="space-y-0.5">
+              <span
+                className={cn(
+                  "block font-bold text-sm",
+                  selected ? opt.activeText : "text-gray-900",
+                )}
+              >
+                {opt.title}
+              </span>
+              <span className="block text-xs text-gray-500 leading-snug">
+                {opt.description}
+              </span>
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }

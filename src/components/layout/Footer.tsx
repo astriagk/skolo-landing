@@ -1,4 +1,5 @@
 import Image from "next/image";
+import OpenModalButton from "@/components/ui/OpenModalButton";
 import {
   SITE_NAME,
   CONTACT,
@@ -74,28 +75,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#interest-form"
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                >
+                <OpenModalButton className="text-sm text-gray-400 hover:text-white transition-colors duration-200 text-left">
                   Parents - Track Your Child
-                </a>
+                </OpenModalButton>
               </li>
               <li>
-                <a
-                  href="#interest-form"
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                >
+                <OpenModalButton className="text-sm text-gray-400 hover:text-white transition-colors duration-200 text-left">
                   Schools - Partner With Us
-                </a>
+                </OpenModalButton>
               </li>
               <li>
-                <a
-                  href="#interest-form"
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                >
+                <OpenModalButton className="text-sm text-gray-400 hover:text-white transition-colors duration-200 text-left">
                   Drivers - Join Our Network
-                </a>
+                </OpenModalButton>
               </li>
             </ul>
           </div>

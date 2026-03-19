@@ -1,5 +1,5 @@
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import Button from "@/components/ui/Button";
+import OpenModalButton from "@/components/ui/OpenModalButton";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 const schoolFeatures = [
@@ -111,12 +111,9 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <Button
-                  href="#interest-form"
-                  className="w-full justify-center shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30"
-                >
+                <OpenModalButton className="w-full justify-center inline-flex items-center font-semibold rounded-xl transition-all duration-200 cursor-pointer px-6 py-3 text-base gap-2 bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30 hover:-translate-y-0.5">
                   Register Interest
-                </Button>
+                </OpenModalButton>
               </div>
             </div>
           </AnimateOnScroll>
@@ -191,13 +188,9 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <Button
-                href="#interest-form"
-                variant="outline"
-                className="w-full justify-center"
-              >
+              <OpenModalButton className="w-full justify-center inline-flex items-center font-semibold rounded-xl transition-all duration-200 cursor-pointer px-6 py-3 text-base gap-2 bg-transparent text-gray-700 border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50">
                 Notify Me When Available
-              </Button>
+              </OpenModalButton>
             </div>
           </AnimateOnScroll>
         </div>
