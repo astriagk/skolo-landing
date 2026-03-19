@@ -1,8 +1,12 @@
+"use client";
+
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import { RocketCountdown } from "@/components/ui/LaunchCountdown";
 import InterestCounter from "@/components/ui/InterestCounter";
+import ClickButton from "@/components/ui/ClickButton";
+import { openInterestModal } from "@/lib/modalController";
 
 export default function Hero() {
   return (
@@ -76,9 +80,9 @@ export default function Hero() {
             <AnimateOnScroll delay={300}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button
-                  href="#interest-form"
                   size="lg"
                   className="shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30 transition-shadow"
+                  onClick={openInterestModal}
                 >
                   Join Us
                   <svg
@@ -136,6 +140,7 @@ export default function Hero() {
                   </span>
                 </div>
                 <InterestCounter />
+                <ClickButton />
               </div>
             </AnimateOnScroll>
 
@@ -148,13 +153,13 @@ export default function Hero() {
               <div className="mt-6 flex flex-wrap gap-2">
                 {[
                   { label: "Parents", icon: "👥" },
-                  { label: "Schools", icon: "\u{1F3EB}" },
-                  { label: "Drivers", icon: "\u{1F68C}" },
+                  { label: "Schools", icon: "🏫" },
+                  { label: "Drivers", icon: "🚌" },
                 ].map((item) => (
-                  <a
+                  <button
                     key={item.label}
-                    href="#interest-form"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-primary-200/60 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-primary-700 shadow-sm hover:border-primary-400 hover:bg-primary-50 hover:shadow-md transition-all"
+                    onClick={openInterestModal}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-primary-200/60 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-primary-700 shadow-sm hover:border-primary-400 hover:bg-primary-50 hover:shadow-md transition-all cursor-pointer"
                   >
                     <span>{item.icon}</span>
                     {item.label}
@@ -171,7 +176,7 @@ export default function Hero() {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </a>
+                  </button>
                 ))}
               </div>
             </AnimateOnScroll>

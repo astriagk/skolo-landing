@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getInterestCounts } from "@/lib/api";
 
 export default function InterestStats() {
   const [total, setTotal] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("/api/interest/counts")
-      .then((r) => r.json())
+    getInterestCounts()
       .then((data) => setTotal(data.total))
       .catch(() => {});
   }, []);

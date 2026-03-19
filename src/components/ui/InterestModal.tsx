@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import InterestFormContent from "@/components/form/InterestFormContent";
+import { registerModal, unregisterModal } from "@/lib/modalController";
 
 type VisualState = "open" | "closing";
 
@@ -23,6 +24,13 @@ export default function InterestModal() {
   };
 
   useEffect(() => {
+    const forceOpen = () => {
+      setVisualState("open");
+      setVisible(true);
+    };
+
+    registerModal(forceOpen);
+
     const onScroll = () => {
       const scrolled = window.scrollY + window.innerHeight;
       if (scrolled / document.documentElement.scrollHeight >= 0.5) {
@@ -37,6 +45,7 @@ export default function InterestModal() {
     document.addEventListener("mouseleave", onMouseLeave);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
+      unregisterModal();
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("visibilitychange", onVisibility);
@@ -93,7 +102,7 @@ export default function InterestModal() {
 
         {/* Scrollable body */}
         <div className="overflow-y-auto p-6">
-          <InterestFormContent compact />
+          <InterestFormContent compact onSuccess={close} />
         </div>
       </div>
     </div>

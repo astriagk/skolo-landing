@@ -28,7 +28,7 @@ export default function Accordion({ items, className }: AccordionProps) {
           >
             <button
               onClick={() => setOpenId(isOpen ? null : item.id)}
-              className="flex w-full items-center justify-between px-6 py-4 text-left cursor-pointer"
+              className="flex w-full items-center justify-between px-6 py-4 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-inset"
             >
               <span className="font-semibold text-gray-900 pr-4">
                 {item.question}

@@ -1,5 +1,7 @@
 "use client";
 
+import { openInterestModal } from "@/lib/modalController";
+
 export default function StickyCTA() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -34,9 +36,9 @@ export default function StickyCTA() {
       </button>
 
       {/* Main button */}
-      <a
-        href="#interest-form"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-3.5 text-sm font-semibold text-white shadow-2xl shadow-primary-500/40 transition-all duration-300 hover:shadow-primary-500/60 hover:-translate-y-1 hover:scale-105 animate-bounce-subtle md:bottom-8 md:right-8"
+      <button
+        onClick={openInterestModal}
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-3.5 text-sm font-semibold text-white shadow-2xl shadow-primary-500/40 transition-all duration-300 hover:shadow-primary-500/60 hover:-translate-y-1 hover:scale-105 animate-bounce-subtle md:bottom-8 md:right-8 cursor-pointer"
       >
         <svg
           className="h-4 w-4 animate-pulse"
@@ -52,7 +54,7 @@ export default function StickyCTA() {
           />
         </svg>
         Join Us
-      </a>
+      </button>
     </>
   );
 }

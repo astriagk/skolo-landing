@@ -6,7 +6,29 @@ export async function GET(request: Request) {
   const phone = searchParams.get("phone");
   const userType = searchParams.get("userType");
 
-  if (!phone || !userType || phone.length !== 10) {
+  // No phone param → return counts breakdown
+  if (!phone) {
+    try {
+      const client = await clientPromise;
+      const db = client.db(process.env.DB_NAME);
+      const rows = await db
+        .collection("interests")
+        .aggregate([{ $group: { _id: "$userType", count: { $sum: 1 } } }])
+        .toArray();
+      const result = { parent: 0, school: 0, driver: 0, total: 0 };
+      for (const row of rows) {
+        if (row._id === "parent") result.parent = row.count;
+        else if (row._id === "school") result.school = row.count;
+        else if (row._id === "driver") result.driver = row.count;
+        result.total += row.count;
+      }
+      return NextResponse.json(result);
+    } catch {
+      return NextResponse.json({ parent: 0, school: 0, driver: 0, total: 0 });
+    }
+  }
+
+  if (!userType || phone.length !== 10) {
     return NextResponse.json({ exists: false });
   }
 
