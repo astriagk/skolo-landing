@@ -5,8 +5,8 @@ export const SITE_DESCRIPTION =
 
 export const CONTACT = {
   email: "skolo@astriagk.com",
-  phone: "+91 88673 47448",
-  whatsapp: "918867347448",
+  phone: "+91 82176 81139",
+  whatsapp: "918217681139",
   whatsappMessage: "Hi! I'm interested in Skolo for school commute tracking.",
   address: "Bangalore, Karnataka, India",
 };
