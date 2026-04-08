@@ -41,8 +41,8 @@ export function CountdownPill() {
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-500" />
       </span>
-      Launching May 1 &bull; {time.days}d {pad(time.hours)}h {pad(time.minutes)}
-      m
+      Launching June 1 &bull; {time.days}d {pad(time.hours)}h{" "}
+      {pad(time.minutes)}m
     </span>
   );
 }
@@ -76,7 +76,7 @@ export function CountdownHero() {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
         </span>
-        Launching May 1, 2026
+        Launching June 1, 2026
       </p>
       <div className="flex items-end gap-1">
         {units.map((u, i) => (
@@ -149,7 +149,7 @@ export function RocketCountdown() {
         🚀
       </div>
       <p className="text-xs md:text-sm font-semibold uppercase tracking-widest text-primary-500 mb-6">
-        Launching May 1, 2026
+        Launching June 1, 2026
       </p>
       <div className="text-3xl md:text-6xl font-black text-primary-600 font-mono tracking-wider animate-pulse mb-4">
         T - {pad(days)}:{pad(hours)}:{pad(minutes)}:{pad(seconds)}
