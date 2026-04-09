@@ -26,3 +26,17 @@ export const NAV_LINKS = [
 ];
 
 export const WHATSAPP_LINK = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
+
+// Date Constants
+export const DATES = {
+  LAUNCH_DATE: new Date("2026-06-01T00:00:00+05:30"),
+  LAUNCH_DISPLAY_DATE: "June 1, 2026",
+  LAUNCH_MONTH_DAY: "June 1",
+};
+
+export const ROADMAP_DATES = {
+  PILOT_LAUNCH: "Q2 2026",
+  ANDROID_IOS_APPS: "Q3 2026",
+  WIDER_EXPANSION: "Q4 2026",
+  SMART_FEATURES: "2027",
+};

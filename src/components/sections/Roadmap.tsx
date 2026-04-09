@@ -1,9 +1,10 @@
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
+import { ROADMAP_DATES } from "@/lib/constants";
 
 const milestones = [
   {
-    date: "Q2 2026",
+    date: ROADMAP_DATES.PILOT_LAUNCH,
     title: "Pilot Launch",
     description:
       "Launch with select schools. Real-time tracking, smart notifications, and OTP-verified handoffs live.",
@@ -12,7 +13,7 @@ const milestones = [
     gradient: "from-primary-500 to-violet-600",
   },
   {
-    date: "Q3 2026",
+    date: ROADMAP_DATES.ANDROID_IOS_APPS,
     title: "Android & iOS Apps",
     description:
       "Native mobile apps for parents and drivers shipping at launch. Enhanced performance and push notifications.",
@@ -21,7 +22,7 @@ const milestones = [
     gradient: "from-gray-400 to-gray-500",
   },
   {
-    date: "Q4 2026",
+    date: ROADMAP_DATES.WIDER_EXPANSION,
     title: "Wider Expansion",
     description:
       "Expanding to more regions based on demand. The more interest we see, the sooner we grow.",
@@ -30,7 +31,7 @@ const milestones = [
     gradient: "from-gray-400 to-gray-500",
   },
   {
-    date: "2027",
+    date: ROADMAP_DATES.SMART_FEATURES,
     title: "Smart Features",
     description:
       "Advanced route optimization, school events & holidays integration, exam schedules, and parent-school communication hub.",
@@ -69,7 +70,11 @@ export default function Roadmap() {
             <div className="absolute top-6 left-8 right-8 h-0.5 bg-gradient-to-r from-primary-500 via-violet-400 to-gray-200" />
 
             {milestones.map((m, i) => (
-              <AnimateOnScroll key={i} delay={i * 120} className="flex-1 relative">
+              <AnimateOnScroll
+                key={i}
+                delay={i * 120}
+                className="flex-1 relative"
+              >
                 {/* Dot */}
                 <div className="flex justify-center mb-4">
                   <div
@@ -98,11 +103,13 @@ export default function Roadmap() {
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                      m.status === "in-progress"
-                        ? "text-primary-700 bg-primary-100"
-                        : "text-gray-500 bg-gray-100"
-                    }`}>
+                    <span
+                      className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                        m.status === "in-progress"
+                          ? "text-primary-700 bg-primary-100"
+                          : "text-gray-500 bg-gray-100"
+                      }`}
+                    >
                       {m.date}
                     </span>
                     {m.status === "in-progress" && (
@@ -147,9 +154,13 @@ export default function Roadmap() {
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className={`text-xs font-bold ${
-                        m.status === "in-progress" ? "text-primary-600" : "text-gray-500"
-                      }`}>
+                      <span
+                        className={`text-xs font-bold ${
+                          m.status === "in-progress"
+                            ? "text-primary-600"
+                            : "text-gray-500"
+                        }`}
+                      >
                         {m.date}
                       </span>
                       {m.status === "in-progress" && (
